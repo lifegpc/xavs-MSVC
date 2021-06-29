@@ -1,0 +1,14 @@
+EXPORTS
+    xavs_param_default
+    xavs_picture_alloc
+    xavs_picture_clean
+    xavs_nal_encode
+    xavs_nal_decode
+    xavs_encoder_open
+    xavs_encoder_reconfig
+    xavs_encoder_headers
+    xavs_encoder_encode
+    xavs_encoder_close
+    xavs_encoder_delayed_frames
+    xavs_reduce_fraction
+    xavs_mdate

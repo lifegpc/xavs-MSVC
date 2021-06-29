@@ -41,12 +41,14 @@
 #include <stdlib.h>
 
 #ifdef _MSC_VER
-#define snprintf _snprintf
+//#define snprintf _snprintf
 #define XAVS_VERSION ""         // no configure script for msvc
 #endif
 
 /* threads */
-#ifdef __WIN32__
+#if defined(HAVE_PTHREAD)
+#include <pthread.h>
+#elif __WIN32__
 #include <windows.h>
 #define pthread_t               HANDLE
 #define pthread_create(t,u,f,d) *(t)=CreateThread(NULL,0,f,d,0,NULL)
@@ -68,9 +70,6 @@ static int pthread_num_processors_np()
 #define pthread_join(t,s)       { long tmp; \
                                   wait_for_thread(t,(s)?(long*)(s):&tmp); }
 #define HAVE_PTHREAD 1
-
-#elif defined(HAVE_PTHREAD)
-#include <pthread.h>
 #endif
 
 /****************************************************************************
